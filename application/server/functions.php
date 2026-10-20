@@ -108,7 +108,7 @@ function sendPage(int $code, string $title, string $content): void
     header('Content-Type: text/html; charset=utf-8');
     echo '<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">'
         . '<meta name="viewport" content="width=device-width, initial-scale=1.0">'
-        . '<title>' . escape($title) . ' - Order Management App</title>'
+        . '<title>' . escape($title) . ' - Gerard's Management App</title>'
         . '<link rel="stylesheet" href="../client/styles.css">'
         . '</head><body><main><div class="box">'
         . '<h1>' . escape($title) . '</h1>'
