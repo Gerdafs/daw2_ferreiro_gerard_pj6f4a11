@@ -1,0 +1,9 @@
+# Fitxer de comandes: es crea automàticament quan s'afegeix la primera comanda
+orders/orders.json
+
+# Fitxers del sistema i de l'editor
+.vscode/
+.idea/
+Thumbs.db
+desktop.ini
+.DS_Store
