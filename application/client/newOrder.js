@@ -56,4 +56,40 @@ async function loadProducts() {
     }
 }
 
+// Mostra el document HTML d'error enviat per la part servidora
+function showServerPage(html) {
+    document.open();
+    document.write(html);
+    document.close();
+}
+
+async function sendOrder(event) {
+    event.preventDefault();
+    errorMessage.textContent = '';
+    resultMessage.textContent = '';
+
+    if (orderForm.querySelectorAll('input[type="checkbox"]:checked').length === 0) {
+        errorMessage.textContent = 'Please select at least one product.';
+        return;
+    }
+
+    try {
+        const response = await fetch('../server/createOrder.php', {
+            method: 'POST',
+            body: new FormData(orderForm)
+        });
+        const text = await response.text();
+
+        if (response.ok) {
+            const orderId = document.getElementById('orderId').value.trim();
+            resultMessage.textContent = 'Order ' + orderId + ' has been saved. Total price (VAT 21% included): ' + text + ' €';
+        } else {
+            showServerPage(text);
+        }
+    } catch (error) {
+        errorMessage.textContent = 'The server could not be reached. Please try again.';
+    }
+}
+
+orderForm.addEventListener('submit', sendOrder);
 loadProducts();
