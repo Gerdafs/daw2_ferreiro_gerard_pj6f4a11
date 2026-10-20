@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View one order - Order Management App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <main>
+        <div class="box">
+            <h1>View one order</h1>
+            <form id="searchForm" action="../server/showOrder.php" method="get">
+                <div class="field">
+                    <label for="orderId">Order ID</label>
+                    <input type="text" id="orderId" name="orderId">
+                </div>
+                <p id="message" class="message error"></p>
+                <div class="buttons">
+                    <a class="button" href="viewOrders.html">Back to view orders</a>
+                    <a class="button" href="menu.html">Back to operations menu</a>
+                    <a class="button" href="index.html">Back to start</a>
+                    <button type="submit" class="primary">Search</button>
+                </div>
+            </form>
+        </div>
+    </main>
+    <script src="viewOrder.js"></script>
+</body>
+</html>
