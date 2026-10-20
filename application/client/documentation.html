@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Description and documentation - Order Management App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <main>
+        <div class="box">
+            <h1>Description and documentation</h1>
+
+            <p>Order Management App is the application used by the sales staff of our European chain of
+            electronics stores to register customer orders and look them up later. All orders are saved
+            on the server, which is also where prices are calculated.</p>
+
+            <p>To use the application you have to log in first with your username and password. Both
+            fields are required. If the user cannot be validated, an error message is shown and you are
+            taken back to the start page.</p>
+
+            <p>After logging in, the operations menu lets you choose one of these operations and open it
+            with the <em>Go</em> button:</p>
+
+            <h2>Create a new order</h2>
+            <p>Fill in the order ID and the customer's details: full name, address, email address and
+            phone number. Then tick the products the customer wants to buy and enter the quantity of each
+            one (the quantity box is only enabled when the product is ticked). Click <em>Send order</em>
+            and the server will calculate the total price of the order with VAT (21%), save the order and
+            send back the total, which is shown below the form.</p>
+
+            <h2>View orders</h2>
+            <p>Choose one of the two options and click <em>Go</em>:</p>
+            <ul>
+                <li><strong>View all orders</strong>: shows a table with all the data of every saved
+                order.</li>
+                <li><strong>View one order</strong>: enter the ID of an order and click <em>Search</em>
+                to see a table with all the data of that order. If there is no order with that ID, an
+                error message is shown.</li>
+            </ul>
+            <p>If the orders file cannot be found or opened, an error message is shown instead.</p>
+
+            <div class="buttons">
+                <a class="button" href="index.html">Back to start</a>
+                <a class="button primary" href="login.html">Log in</a>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
