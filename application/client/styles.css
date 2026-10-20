@@ -45,3 +45,138 @@ h2 {
     width: 96px;
     height: 96px;
 }
+
+/* Formularis */
+
+label {
+    display: block;
+    margin-bottom: 4px;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="tel"],
+input[type="number"],
+select {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 400px;
+    padding: 7px 8px;
+    border: 1px solid #b9bfc7;
+    border-radius: 3px;
+    font-size: 15px;
+    font-family: inherit;
+}
+
+input[type="number"] {
+    width: 90px;
+}
+
+input:disabled {
+    background: #eceef1;
+}
+
+.field {
+    margin-bottom: 14px;
+}
+
+.option {
+    display: block;
+    font-weight: normal;
+    margin-bottom: 6px;
+}
+
+/* Botons */
+
+.buttons {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.start .buttons {
+    justify-content: center;
+}
+
+button,
+.button {
+    display: inline-block;
+    padding: 8px 16px;
+    border: 1px solid #1f4e79;
+    border-radius: 3px;
+    background: #fff;
+    color: #1f4e79;
+    font-size: 15px;
+    font-family: inherit;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+button:hover,
+.button:hover {
+    background: #e8eef5;
+}
+
+.primary {
+    background: #2b6cb0;
+    border-color: #2b6cb0;
+    color: #fff;
+}
+
+.primary:hover {
+    background: #245a93;
+}
+
+/* Taules */
+
+.table-wrapper {
+    overflow-x: auto;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th,
+td {
+    border: 1px solid #d5d9de;
+    padding: 6px 10px;
+    text-align: left;
+    vertical-align: top;
+}
+
+th {
+    background: #eef1f4;
+}
+
+td.number {
+    text-align: right;
+    white-space: nowrap;
+}
+
+/* Missatges */
+
+.message {
+    margin-top: 16px;
+    padding: 10px 12px;
+    border-radius: 3px;
+}
+
+.message:empty {
+    display: none;
+}
+
+.result {
+    background: #eef6ee;
+    border: 1px solid #b7d4b7;
+}
+
+.error {
+    background: #fbeeee;
+    border: 1px solid #e0b4b4;
+    color: #8a1f1f;
+}
