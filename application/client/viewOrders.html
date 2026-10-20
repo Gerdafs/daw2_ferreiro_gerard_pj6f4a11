@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View orders - Order Management App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <main>
+        <div class="box">
+            <h1>View orders</h1>
+            <p>Select what you want to see:</p>
+            <div class="field">
+                <label class="option">
+                    <input type="radio" name="view" value="../server/showAllOrders.php" checked>
+                    View all orders
+                </label>
+                <label class="option">
+                    <input type="radio" name="view" value="viewOrder.html">
+                    View one order
+                </label>
+            </div>
+            <div class="buttons">
+                <a class="button" href="menu.html">Back to operations menu</a>
+                <a class="button" href="index.html">Back to start</a>
+                <button type="button" id="goButton" class="primary">Go</button>
+            </div>
+        </div>
+    </main>
+    <script src="viewOrders.js"></script>
+</body>
+</html>
