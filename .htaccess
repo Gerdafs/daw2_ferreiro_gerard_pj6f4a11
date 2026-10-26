@@ -1,0 +1,14 @@
+# No es mostra el contingut de les carpetes
+Options -Indexes
+
+RewriteEngine On
+
+# Totes les peticions es fan per HTTPS
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+# Els fitxers d'usuaris i de comandes no es poden obrir des del navegador
+RewriteRule ^(users|orders)(/|$) - [F,L]
+
+# L'arrel de l'aplicació porta a la interfície d'inici
+RewriteRule ^$ %{REQUEST_URI}application/client/index.html [R=302,L]
