@@ -61,3 +61,32 @@ function writeJsonFile(string $path, array $data): bool
 
     return $written !== false;
 }
+
+// Envia la capçalera HTTP amb el codi d'estat indicat
+function sendStatus(int $code): void
+{
+    $statusTexts = [200 => '200 OK', 404 => '404 Not Found'];
+    header($_SERVER['SERVER_PROTOCOL'] . ' ' . $statusTexts[$code]);
+}
+
+// Envia una resposta en format JSON
+function sendJson(array $data): void
+{
+    sendStatus(200);
+    header('Content-Type: application/json; charset=utf-8');
+    echo json_encode($data);
+}
+
+// Envia una resposta que només conté el resultat en text pla
+function sendText(string $text): void
+{
+    sendStatus(200);
+    header('Content-Type: text/plain; charset=utf-8');
+    echo $text;
+}
+
+// Escapa el text per poder-lo mostrar dins d'un document HTML
+function escape(string $text): string
+{
+    return htmlspecialchars($text, ENT_QUOTES, 'UTF-8');
+}
