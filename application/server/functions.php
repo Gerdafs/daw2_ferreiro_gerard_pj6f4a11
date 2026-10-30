@@ -90,3 +90,64 @@ function escape(string $text): string
 {
     return htmlspecialchars($text, ENT_QUOTES, 'UTF-8');
 }
+
+// Botons de tornada que porten tots els documents HTML generats
+function renderButtons(): string
+{
+    return '<div class="buttons">'
+        . '<a class="button" href="../client/viewOrders.html">Back to view orders</a>'
+        . '<a class="button" href="../client/menu.html">Back to operations menu</a>'
+        . '<a class="button" href="../client/index.html">Back to start</a>'
+        . '</div>';
+}
+
+// Envia un document HTML complet amb el codi d'estat indicat
+function sendPage(int $code, string $title, string $content): void
+{
+    sendStatus($code);
+    header('Content-Type: text/html; charset=utf-8');
+    echo '<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">'
+        . '<meta name="viewport" content="width=device-width, initial-scale=1.0">'
+        . '<title>' . escape($title) . " - Gerard's Order Management App</title>"
+        . '<link rel="stylesheet" href="../client/styles.css">'
+        . '</head><body><main><div class="box">'
+        . '<h1>' . escape($title) . '</h1>'
+        . $content
+        . renderButtons()
+        . '</div></main></body></html>';
+}
+
+// Error 404 quan no es troba o no es pot obrir orders.json
+function sendFileError(): void
+{
+    sendPage(404, 'File error',
+        '<p class="message error">The orders file (orders.json) could not be found or could not be opened.</p>');
+}
+
+// Error 404 quan no existeix cap comanda amb el codi demanat
+function sendOrderNotFound(string $orderId): void
+{
+    sendPage(404, 'Order not found',
+        '<p class="message error">There is no order with the ID "' . escape($orderId) . '".</p>');
+}
+
+// Calcula el preu total amb IVA a partir de les línies de la comanda
+function calculateTotalWithVat(array $lines): float
+{
+    $total = 0.0;
+    foreach ($lines as $line) {
+        $total += $line['unitPrice'] * $line['quantity'];
+    }
+    return round($total * (1 + VAT_RATE / 100), 2);
+}
+
+// Busca una comanda pel seu codi identificador
+function findOrder(array $orders, string $orderId): ?array
+{
+    foreach ($orders as $order) {
+        if ($order['orderId'] === $orderId) {
+            return $order;
+        }
+    }
+    return null;
+}
