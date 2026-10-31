@@ -131,6 +131,33 @@ button:hover,
     background: #245a93;
 }
 
+/* Taules */
+
+.table-wrapper {
+    overflow-x: auto;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th,
+td {
+    border: 1px solid #d5d9de;
+    padding: 6px 10px;
+    text-align: left;
+    vertical-align: top;
+}
+
+th {
+    background: #eef1f4;
+}
+
+td.number {
+    text-align: right;
+    white-space: nowrap;
+}
 
 /* Missatges */
 

@@ -151,3 +151,39 @@ function findOrder(array $orders, string $orderId): ?array
     }
     return null;
 }
+
+// Genera la taula HTML amb totes les dades de les comandes rebudes
+function renderOrdersTable(array $orders): string
+{
+    $html = '<div class="table-wrapper"><table><thead><tr>'
+        . '<th>Order ID</th><th>Customer full name</th><th>Address</th><th>Email</th><th>Phone</th>'
+        . '<th>Product</th><th>Unit price (excl. VAT)</th><th>Quantity</th><th>Total price (VAT 21% incl.)</th>'
+        . '</tr></thead><tbody>';
+
+    foreach ($orders as $order) {
+        $rows = count($order['products']);
+        $first = true;
+
+        foreach ($order['products'] as $line) {
+            $html .= '<tr>';
+            if ($first) {
+                $html .= '<td rowspan="' . $rows . '">' . escape($order['orderId']) . '</td>'
+                    . '<td rowspan="' . $rows . '">' . escape($order['customer']['fullName']) . '</td>'
+                    . '<td rowspan="' . $rows . '">' . escape($order['customer']['address']) . '</td>'
+                    . '<td rowspan="' . $rows . '">' . escape($order['customer']['email']) . '</td>'
+                    . '<td rowspan="' . $rows . '">' . escape($order['customer']['phone']) . '</td>';
+            }
+            $html .= '<td>' . escape($line['product']) . '</td>'
+                . '<td class="number">' . formatPrice((float) $line['unitPrice']) . ' €</td>'
+                . '<td class="number">' . $line['quantity'] . '</td>';
+            if ($first) {
+                $html .= '<td class="number" rowspan="' . $rows . '">'
+                    . formatPrice((float) $order['totalPriceWithVat']) . ' €</td>';
+                $first = false;
+            }
+            $html .= '</tr>';
+        }
+    }
+
+    return $html . '</tbody></table></div>';
+}
