@@ -95,7 +95,7 @@ Perquè el `.htaccess` funcioni, cal que la carpeta de l'aplicació tingui `Allo
 
 ## Usuari
 
-L'usuari de l'aplicació és `admin`. La contrasenya es desa xifrada a `users/users.json` i la proporciona el professor.
+L'usuari de l'aplicació és `gerard`. La contrasenya es desa xifrada a `users/users.json`.
 
 ## Proves
 
